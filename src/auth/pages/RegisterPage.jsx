@@ -9,9 +9,25 @@ const formData = {
   displayName: "MAximiliano Belli",
 };
 
+const formValidations = {
+  email: [(value) => value.includes('@'), 'Email must contain an @ symbol'],
+  password: [(value) => value.length >= 6, 'Password must be at least 6 characters long'],
+  displayName: [(value) => value.length >= 1, 'Name is required'],
+  };
+
 export const RegisterPage = () => {
-  const { formState, displayName, email, password, onInputChange } = useForm({
-    formData,
+  const {
+    formState,
+    displayName,
+    email,
+    password,
+    onInputChange,
+    isFormValid,
+    displayNameValid,
+    emailValid,
+    passwordValid,
+  } = useForm({
+    formData, formValidations
   });
 
   const onSubmit = (event) => {
