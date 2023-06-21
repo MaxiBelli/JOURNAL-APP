@@ -11,7 +11,8 @@ const googleProvider = new GoogleAuthProvider();
 export const singInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(FirebaseAuth, googleProvider);
-    // const credentials = GoogleAuthProvider.credentialFromResult( result );
+    // const credentials = GoogleAuthProvider.credentialFromResult(result);
+    // console.log({ credentials });
     const { displayName, email, photoURL, uid } = result.user;
 
     return {
@@ -46,7 +47,7 @@ export const registerUserWithEmailPassword = async ({
     );
     const { uid, photoURL } = resp.user;
 
-    console.log(resp);
+    await updateProfile(FirebaseAuth.currentUser, { displayName });
 
     return {
       ok: true,

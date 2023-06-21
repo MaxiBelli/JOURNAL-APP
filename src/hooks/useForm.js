@@ -4,7 +4,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm);
   const [formValidation, setFormValidation] = useState({});
 
-    useEffect(() => {
+  useEffect(() => {
     createValidators();
   }, [formState]);
 
@@ -12,6 +12,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     for (const formValue of Object.keys(formValidation)) {
       if (formValidation[formValue] !== null) return false;
     }
+
     return true;
   }, [formValidation]);
 
@@ -37,6 +38,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         ? null
         : errorMessage;
     }
+
     setFormValidation(formCheckedValues);
   };
 
@@ -45,6 +47,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     formState,
     onInputChange,
     onResetForm,
+
     ...formValidation,
     isFormValid,
   };
