@@ -12,8 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 import { TurnedInNot } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 export const SideBar = ({ drawerWidth = 240 }) => {
+  const { displayName } = useSelector((state) => state.auth);
+
   return (
     <Box
       component="nav"
@@ -29,13 +32,13 @@ export const SideBar = ({ drawerWidth = 240 }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Maximiliano Belli
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
 
         <List>
-          {["January", "February", "March", "April"].map((text) => (
+          {["Enero", "Febrero", "Marzo", "Abril"].map((text) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
