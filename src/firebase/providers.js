@@ -13,7 +13,6 @@ export const singInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(FirebaseAuth, googleProvider);
     // const credentials = GoogleAuthProvider.credentialFromResult(result);
-    // console.log({ credentials });
     const { displayName, email, photoURL, uid } = result.user;
 
     return {
@@ -81,4 +80,8 @@ export const loginWithEmailPassword = async ({ email, password }) => {
   } catch (error) {
     return { ok: false, errorMessage: error.message };
   }
+};
+
+export const logoutFirebase = async () => {
+  return await FirebaseAuth.signOut();
 };
